@@ -1,0 +1,22 @@
+{% set placeholder      = config.plugins["tecart-search"]["searchbox_placeholder"] %}
+{% set linktarget       = config.plugins["tecart-search"]["searchresult_target"] %}
+{% set resultheadline   = config.plugins["tecart-search"]["searchresult_headline"] %}
+{% set empty            = config.plugins["tecart-search"]["searchresult_empty"] %}
+{% set storage          = config.plugins["tecart-search"]["index_storage"] %}
+
+<button class="tecart-search-toggle fas fa-search"></button>
+<div class="tecart-search-form" style="display:none;">
+    <div class="tecart-search-form-fields">
+        <input class="tecart-search-box"
+               name="tecart-search"
+               type="search"
+               placeholder="{{ placeholder }}"
+               data-storage="{{ storage }}"
+               data-linktarget="{{ linktarget }}"
+               data-empty="{{ empty }}"
+               data-resultheadline="{{ resultheadline }}" />
+        <i class="tecart-search-placeholder-icon fas fa-search"></i>
+        <div class="tecart-search-close"><i class="fas fa-times"></i></div>
+        <ul class="tecart-search-results"></ul>
+    </div>
+</div>

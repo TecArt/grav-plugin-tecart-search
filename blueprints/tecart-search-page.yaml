@@ -1,0 +1,27 @@
+form:
+  fields:
+    tabs:
+      fields:
+        options:
+          type: tab
+
+          fields:
+
+            tecartsearch:
+              type: section
+              title: PLUGIN_TECART_SEARCH.PAGE_SEARCH_HEADLINE
+              underline: true
+
+              fields:
+                header.tecartsearch.ignore:
+                  type: toggle
+                  toggleable: true
+                  label: PLUGIN_TECART_SEARCH.HEADER_IGNORE
+                  highlight: 0
+                  default: 0
+                  options:
+                      1: PLUGIN_ADMIN.YES
+                      0: PLUGIN_ADMIN.NO
+                  validate:
+                      type: bool
+                      required: false

@@ -1,0 +1,36 @@
+en:
+    PLUGIN_TECART_SEARCH:
+        TEXT_STORAGE: Index Storage
+        TEXT_STORAGE_HELP: Folder where to store the index json file for search
+        TEXT_STORAGE_INFO: Save changes before using the create button!
+        QUICKTRAY: Add Quick Tray icon in admin menu
+        QUICK_TRAY_PERMISSIONS: Quick Tray Permissions
+        TEXT_INDEXER_SETTINGS: Indexer Settings
+        TEXT_SEARCHBOX_SETTINGS: Searchbox Settings
+        TEXT_SEARCHBOX_PLACEHOLDER: Placeholder
+        SEARCHRESULT_PATH: Result link path relative or absolute
+        SEARCHRESULT_TARGET: Result link target
+        SEARCHRESULT_HEADLINE: Search result headline
+        SEARCHRESULT_EMPTY: Empty search result text
+        JQUERY: Include jQuery Library
+        JQUERY_DESCRIPTION: Include Jquery Library from plugin folder. Not recommended if theme already includes jQuery.
+        PAGE_SEARCH_HEADLINE: TecArt Search
+        HEADER_IGNORE: Search ignore page
+de:
+    PLUGIN_TECART_SEARCH:
+        TEXT_STORAGE: Index Storage
+        TEXT_STORAGE_HELP: Verzeichnis zum Speichern der Index JSON Datei für die Suche
+        TEXT_STORAGE_INFO: Vor dem Indexieren getätigte Änderungen speichen!
+        QUICKTRAY: Quick Tray icon im Admin Menü anzeigen
+        QUICK_TRAY_PERMISSIONS: Quick Tray Zugriffsrechte
+        TEXT_INDEXER_SETTINGS: Indexer Einstellungen
+        TEXT_SEARCHBOX_SETTINGS: Suchbox Einstellungen
+        TEXT_SEARCHBOX_PLACEHOLDER: Placeholder
+        SEARCHRESULT_PATH: Suchergebnis - Linkpfade relativ oder absolut
+        SEARCHRESULT_TARGET: Suchergebnis- Linkziel
+        SEARCHRESULT_HEADLINE: Suchergebnis Überschrift
+        SEARCHRESULT_EMPTY: Text, wenn keine Suchergebnisse
+        JQUERY: jQuery einbinden
+        JQUERY_DESCRIPTION: Jquery Library aus diesem Plugin einbinden. Nicht empfohlen, wenn Ihr Theme bereits jQuery nutzt.
+        PAGE_SEARCH_HEADLINE: TecArt Suche
+        HEADER_IGNORE: Seite von der Suche ausschließen

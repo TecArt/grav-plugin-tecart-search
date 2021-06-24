@@ -1,0 +1,129 @@
+name: TecArt Search
+slug: tecart-search
+type: plugin
+version: 0.1.0
+description: Search Grav Pages in Frontend via JavaScript. Search based on JQuery. Useful for static websites without PHP support.
+icon: search
+author:
+    name: Christiana Holland-Jobb
+    email: christiana.holland-jobb@tecart.de
+homepage: https://www.tecart.de
+keywords: grav, plugin, search, frontend, pages, javascript, jquery
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.7.0' }
+  - { name: admin, version: '>=1.9.16' }
+
+form:
+  validation: strict
+
+  fields:
+
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    quick_tray:
+        type: toggle
+        label: PLUGIN_TECART_SEARCH.QUICKTRAY
+        help: PLUGIN_TECART_SEARCH.QUICKTRAY
+        options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+        validate:
+            type: bool
+
+    quick_tray_permissions:
+        type: selectize
+        label: PLUGIN_TECART_SEARCH.QUICK_TRAY_PERMISSIONS
+        allowEmptyOption: true
+        classes: fancy
+        selectize:
+            create: false
+            data-options@: 'Grav\Plugin\TecartSearch\Classes\BlueprintHelper\BlueprintHelper::getAdminPermissionsForBlueprintOptions'
+        validate:
+            type: commalist
+
+    includes_jquery:
+        type: toggle
+        label: PLUGIN_TECART_SEARCH.JQUERY
+        description: PLUGIN_TECART_SEARCH.JQUERY_DESCRIPTION
+        default: 0
+        options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+        validate:
+            type: bool
+
+    searchbox_title:
+        type: spacer
+        title: PLUGIN_TECART_SEARCH.TEXT_SEARCHBOX_SETTINGS
+
+    searchbox_placeholder:
+        type: text
+        size: large
+        label: PLUGIN_TECART_SEARCH.TEXT_SEARCHBOX_PLACEHOLDER
+        default: TecArt Website durchsuchen!
+
+    searchresult_headline:
+        type: text
+        size: large
+        label: PLUGIN_TECART_SEARCH.SEARCHRESULT_HEADLINE
+        default: 'Treffer:'
+
+    searchresult_empty:
+        type: text
+        size: large
+        label: PLUGIN_TECART_SEARCH.SEARCHRESULT_EMPTY
+        default: 'Leider keine Ergebnisse.'
+
+    searchresult_path:
+        type: toggle
+        label: PLUGIN_TECART_SEARCH.SEARCHRESULT_PATH
+        default: relative
+        options:
+            abolute: abolute
+            relative: relative
+
+    searchresult_target:
+        type: toggle
+        label: PLUGIN_TECART_SEARCH.SEARCHRESULT_TARGET
+        default: _blank
+        options:
+            _self: _self
+            _blank: _blank
+
+    index_title:
+        type: spacer
+        title: PLUGIN_TECART_SEARCH.TEXT_INDEXER_SETTINGS
+
+    index_storage:
+        type: select
+        size: small
+        classes: fancy
+        label: PLUGIN_TECART_SEARCH.TEXT_STORAGE
+        help: PLUGIN_TECART_SEARCH.TEXT_STORAGE_HELP
+        default: data
+        options:
+            pages: pages/assets
+            data: user/data
+
+    index_storage_info:
+        type: display
+        size: large
+        label:
+        markdown: true
+        content: PLUGIN_TECART_SEARCH.TEXT_STORAGE_INFO
+
+    index_button:
+        type: text
+        disabled: true
+        label: <script>$(document).ready(function() { $('input[name="data[index_button]"]').replaceWith('<a class="button critical tecart-search-indexer" href="?tecartsearchindexer=create" style="background:#343a40;"><i class="fa fa-fw fa-search"></i> Create Search Index</a>'); });</script>
