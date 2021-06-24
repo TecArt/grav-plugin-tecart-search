@@ -1,6 +1,6 @@
 [![TecArt GmbH](tecart-logo-rgba_h120.png)](https://www.tecart.de)
 
-#TecArt Search Plugin
+# TecArt Search Plugin
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
@@ -10,7 +10,7 @@ There is no extra result page for all pages with that content. you can directly 
 
 Searchword / string is searched in title and content of pages.
 
-##Screenshot
+## Screenshot
 
 ![Screenshot](screenshot.png)
 
