@@ -1,14 +1,17 @@
 name: TecArt Search
 slug: tecart-search
 type: plugin
-version: 0.1.0
+version: 0.1.2
 description: Search Grav Pages in Frontend via JavaScript. Search based on JQuery. Useful for static websites without PHP support.
 icon: search
 author:
-    name: Christiana Holland-Jobb
-    email: christiana.holland-jobb@tecart.de
-homepage: https://www.tecart.de
-keywords: grav, plugin, search, frontend, pages, javascript, jquery
+  name: Christiana Holland-Jobb | TecArt GmbH
+  email: christiana.holland-jobb@tecart.de
+  url: http://www.tecart.de
+homepage: https://github.com/TecArt/grav-plugin-tecart-search
+bugs: https://github.com/TecArt/grav-plugin-tecart-search/issues
+docs: https://github.com/TecArt/grav-plugin-tecart-search/blob/main/README.md
+keywords: grav, plugin, search, frontend, pages, javascript, jquery, tecart
 license: MIT
 
 dependencies:
