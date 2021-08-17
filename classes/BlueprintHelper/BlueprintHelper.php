@@ -11,34 +11,34 @@ use Grav\Common\Data\Data;
  */
 class BlueprintHelper extends Data {
 
-    /**
-     * function to call with parameters from blueprints to dynamically fetch the  option list
-     * do this by using data-*@: notation as the key, where * is the field name you want to fill with the result of the function call
-     *
-     * data-options@: 'Grav\Plugin\TecartSearch\Classes\BlueprintHelper\BlueprintHelper::getAdminPermissionsForBlueprintOptions'
-     *
-     * @return array
-     */
-    public static function getAdminPermissionsForBlueprintOptions(): array
-    {
-        $grav = Grav::instance();
-        $return = array();
-        if (!isset($grav['admin'])) {
-            return $return;
-        }
-        if (\method_exists($grav['admin'], 'getPermissions')) {
-            $permissions = $grav['admin']->getPermissions();
-        } elseif (\method_exists($grav['permissions'], 'getInstances')) {
-            $permissions =$grav['permissions']->getInstances();
-        }
-        if (is_array($permissions) && !empty($permissions)) {
-            foreach (array_keys($permissions) as $permission) {
-                $return[] = [
-                    'text' => $permission,
-                    'value' => $permission
-                ];
-            }
-        }
-        return $return;
+  /**
+   * function to call with parameters from blueprints to dynamically fetch the  option list
+   * do this by using data-*@: notation as the key, where * is the field name you want to fill with the result of the function call
+   *
+   * data-options@: 'Grav\Plugin\TecartSearch\Classes\BlueprintHelper\BlueprintHelper::getAdminPermissionsForBlueprintOptions'
+   *
+   * @return array
+   */
+  public static function getAdminPermissionsForBlueprintOptions(): array
+  {
+    $grav        = Grav::instance();
+    $return      = array();
+    $permissions = '';
+
+    if (!isset($grav['admin'])) {
+      return $return;
     }
+    if (\method_exists($grav['permissions'], 'getInstances')) {
+      $permissions = $grav['permissions']->getInstances();
+    }
+    if (is_array($permissions) && !empty($permissions)) {
+      foreach (array_keys($permissions) as $permission) {
+        $return[] = [
+          'text' => $permission,
+          'value' => $permission
+        ];
+      }
+    }
+    return $return;
+  }
 }
