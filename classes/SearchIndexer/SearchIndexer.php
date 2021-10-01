@@ -73,12 +73,15 @@ class SearchIndexer {
             $routes = array_unique($pages->routes());
             ksort($routes);
 
+            $jsonArray = array();
+
             foreach ($routes as $route => $path) {
 
                 /** @var PageInterface $page */
                 $page = $pages->get($path);
                 $header = $page->header();
                 $page_ignored = $header->tecartsearch['ignore'] ?? false;
+                $page_has_higher_priority = $header->tecartsearch['has_higher_priority'] ?? false;
 
                 // only published and routable pages
                 if ($page->routable() && $page->published() && $page_ignored === false){
@@ -88,21 +91,25 @@ class SearchIndexer {
                     //$page_metadata = $page->metadata();
                     $page_content =$page->rawMarkdown();
 
-                    $page_data[] = [
+                    $page_data = [
                         'title' => $page->title(),
                       //'metadata' => $page_metadata,
                         'content' => $page_content,
                         'route' => $page_route,
                         'location' => $location,
+                        'has_higher_priority' => $page_has_higher_priority,
                     ];
-                    //dump($page);die();
 
                     // Encode post data to JSON data format. Pretty-Print for easy editing
-                    $jsonData = json_encode($page_data, JSON_PRETTY_PRINT);
-
-                    file_put_contents($file,$jsonData) ;
+                    array_push($jsonArray, $page_data);
                 }
             }
+            $sort_key = array_column($jsonArray, 'has_higher_priority');
+            array_multisort($sort_key, SORT_DESC, $jsonArray);
+
+            $jsonData = json_encode($jsonArray, JSON_PRETTY_PRINT);
+            file_put_contents($file,$jsonData) ;
+
             return  true;
         }
         return false;

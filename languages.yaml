@@ -16,6 +16,7 @@ en:
         JQUERY_DESCRIPTION: Include Jquery Library from plugin folder. Not recommended if theme already includes jQuery.
         PAGE_SEARCH_HEADLINE: TecArt Search
         HEADER_IGNORE: Search ignore page
+        HEADER_HAS_HIGHER_PRIORITY: Search result has higher priority
 de:
     PLUGIN_TECART_SEARCH:
         TEXT_STORAGE: Index Storage
@@ -34,3 +35,4 @@ de:
         JQUERY_DESCRIPTION: Jquery Library aus diesem Plugin einbinden. Nicht empfohlen, wenn Ihr Theme bereits jQuery nutzt.
         PAGE_SEARCH_HEADLINE: TecArt Suche
         HEADER_IGNORE: Seite von der Suche ausschließen
+        HEADER_HAS_HIGHER_PRIORITY: Suchergebnis hat höhere Priorität

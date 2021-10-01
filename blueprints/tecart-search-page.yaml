@@ -25,3 +25,15 @@ form:
                   validate:
                       type: bool
                       required: false
+                header.tecartsearch.has_higher_priority:
+                    type: toggle
+                    toggleable: true
+                    label: PLUGIN_TECART_SEARCH.HEADER_HAS_HIGHER_PRIORITY
+                    highlight: 0
+                    default: 0
+                    options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                    validate:
+                        type: bool
+                        required: false

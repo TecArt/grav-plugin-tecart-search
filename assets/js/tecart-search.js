@@ -2,6 +2,7 @@
 $('.tecart-search-toggle').on('click', function() {
     // use classes and parent to be able to use search more than once on one page
     $(this).parent().find('.tecart-search-form').toggle('display: inline-block');
+    $("input.tecart-search-box").focus();
 });
 // End - Search Bar & Toggle
 
