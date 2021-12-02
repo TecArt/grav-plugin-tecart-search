@@ -91,21 +91,21 @@ class TecArtSearchPlugin extends Plugin
      *
      * @return void
      */
-    public function onTwigSiteVariables(): void
-    {
-        $assets = $this->grav['assets'];
+  public function onTwigSiteVariables(): void
+  {
+    $assets = $this->grav['assets'];
 
-        // Add plugin CSS files to the grav assets.
-        $assets->addCss($this->assetsPath . $this->tecartSearchCSS);
+    // Add plugin CSS files to the grav assets.
+    $assets->addCss($this->assetsPath . $this->tecartSearchCSS, array('rel' => 'preload'));
 
-        // Add plugin JS files to the grav assets.
-        $assets->addJs($this->assetsPath . $this->tecartSearchJS, array('group' => 'bottom'));
+    // Add plugin JS files to the grav assets.
+    $assets->addJs($this->assetsPath . $this->tecartSearchJS, array('loading' => 'async'));
 
-        // Include jQuery via plugin
-        if ($this->config->get('plugins.tecart-search.includes_jquery')) {
-            $assets->addJs($this->assetsPath . $this->jqueryLib);
-        }
+    // Include jQuery via plugin
+    if ($this->config->get('plugins.tecart-search.includes_jquery')) {
+      $assets->addJs($this->assetsPath . $this->jqueryLib);
     }
+  }
 
     /**
      * Add current directory to twig lookup paths.

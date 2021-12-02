@@ -1,3 +1,9 @@
+# v0.1.5
+##  02/12/2021
+
+1. [](#update)
+   * modifiy assets include in onTwigSiteVariables()
+   
 # v0.1.4
 ##  01/10/2021
 
