@@ -1,3 +1,8 @@
+# v0.1.6
+## 08/15/2023
+1. [](#improved)
+   * Change blueprint information and changelog format
+   
 # v0.1.5
 ##  02/12/2021
 
