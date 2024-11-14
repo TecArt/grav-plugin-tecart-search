@@ -1,3 +1,10 @@
+# v0.1.9
+## 05/07/2024
+1. [](#added)
+- New function `createSearchIndexJsonExtern()` for external index creation via a URL.
+- Ability to create the search index externally via cURL, e.g. `curl yourdomain.de/admin/plugins/tecart-search?tecartsearchindexer=create-extern`.
+
+   
 # v0.1.8
 ## 08/17/2023
 1. [](#improved)

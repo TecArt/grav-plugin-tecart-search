@@ -52,7 +52,8 @@ class TecArtSearchPlugin extends Plugin
                 ['onPluginsInitialized', 0]
             ],
             'onTecArtSearchCreateIndex' => ['createSearchIndexJson', 0],
-            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onTecArtSearchCreateIndexExtern' => ['createSearchIndexJsonExtern', 0],
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0]
         ];
     }
 
@@ -71,9 +72,19 @@ class TecArtSearchPlugin extends Plugin
 
             $uri = $this->grav['uri'];
 
-            if($uri->query() && $uri->query() === 'tecartsearchindexer=create'){
-                // call function createSearchIndexJson on this event
-                $this->grav->fireEvent('onTecArtSearchCreateIndex');
+            // First check whether the parameter exists
+            $query = $uri->query('tecartsearchindexer');
+
+            // Make sure `$query` is not null before executing a switch statement
+            if ($query !== null) {
+                switch ($query) {
+                    case 'create':
+                        $this->grav->fireEvent('onTecArtSearchCreateIndex');
+                        break;
+                    case 'create-extern':
+                        $this->grav->fireEvent('onTecArtSearchCreateIndexExtern');
+                        break;
+                }
             }
 
             return;
@@ -98,13 +109,14 @@ class TecArtSearchPlugin extends Plugin
     // Add plugin CSS files to the grav assets.
     $assets->addCss($this->assetsPath . $this->tecartSearchCSS, array('rel' => 'preload'));
 
-    // Add plugin JS files to the grav assets.
-    $assets->addJs($this->assetsPath . $this->tecartSearchJS, array('loading' => 'async'));
-
     // Include jQuery via plugin
     if ($this->config->get('plugins.tecart-search.includes_jquery')) {
-      $assets->addJs($this->assetsPath . $this->jqueryLib);
+          $assets->addJs($this->assetsPath . $this->jqueryLib, array('loading' => 'async', 'group' => 'bottom'));
     }
+
+    // Add plugin JS files to the grav assets.
+    $assets->addJs($this->assetsPath . $this->tecartSearchJS, array('loading' => 'async', 'group' => 'bottom'));
+
   }
 
     /**
@@ -179,4 +191,40 @@ class TecArtSearchPlugin extends Plugin
 
         $this->grav->redirect($this->grav['uri']->url);
     }
+
+
+    public function onCLI()
+    {
+        $cli = Grav::instance()['cli'];
+
+        $command = $cli->args->get('command');
+
+        if ($command === 'create-search-index-extern') {
+            // Aufruf der Methode zur externen Indexerstellung
+            $this->createSearchIndexJsonExtern();
+        }
+    }
+
+    /**
+     * Create search index file called extern by e.g.
+     * curl http://172.17.0.2/admin/plugins/tecart-search?tecartsearchindexer=create
+     *
+     * @return void
+     */
+    public function createSearchIndexJsonExtern(): void
+    {
+        $file = SearchIndexer::getSearchIndexFile($this->indexerFileName);
+
+        $createSearchIndexer = SearchIndexer::createIndexData($file);
+
+        if ($createSearchIndexer === false) {
+            echo 'Failed.';
+            exit (1);
+        }
+        else {
+            echo 'Done.';
+            exit (0);
+        }
+    }
+
 }
