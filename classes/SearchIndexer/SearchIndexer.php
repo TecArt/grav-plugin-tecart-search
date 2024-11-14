@@ -88,22 +88,41 @@ class SearchIndexer {
 
                     $location = $page->canonical();
                     $page_route = $page->url();
-                    //$page_metadata = $page->metadata();
+                    $page_metadata = '';
                     $page_content =$page->rawMarkdown();
+
+                    if(!empty($header->meta_name_items)) {
+                        $page_metadata = array();
+                        if(!empty($header->meta_name_items['name'])) {
+                            $page_metadata['name'] = $header->meta_name_items['name'];
+                        }
+                        if(!empty($header->meta_name_items['description'])) {
+                            $page_metadata['description'] = $header->meta_name_items['description'];
+                        }
+                    }
+
+                    if (empty($page_content) && isset($header->content) && !isset($header->content['items']) ) {
+                        $page_content = $header->content;
+                    }
+                    elseif (empty($page_content) && isset($header->hero_content)) {
+                        $page_content = $header->hero_content;
+                    }
 
                     $page_data = [
                         'title' => $page->title(),
-                      //'metadata' => $page_metadata,
+                        'metadata' => $page_metadata,
                         'content' => $page_content,
                         'route' => $page_route,
                         'location' => $location,
                         'has_higher_priority' => $page_has_higher_priority,
                     ];
 
+
                     // Encode post data to JSON data format. Pretty-Print for easy editing
                     array_push($jsonArray, $page_data);
                 }
             }
+
             $sort_key = array_column($jsonArray, 'has_higher_priority');
             array_multisort($sort_key, SORT_DESC, $jsonArray);
 

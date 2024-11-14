@@ -1,7 +1,7 @@
 name: TecArt Search
 slug: tecart-search
 type: plugin
-version: 0.1.8
+version: 0.1.9
 description: Search Grav Pages in Frontend via JavaScript. Search based on JQuery. The plugin is created by [TecArt GmbH](https://www.tecart.de). Useful for static websites without PHP support.
 icon: search
 author:
